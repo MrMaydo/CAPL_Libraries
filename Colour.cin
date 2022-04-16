@@ -25,8 +25,6 @@ variables
     GOLD,
     LIGHT_GREY,
     DARK_GREY,
-    LIGHT_RED,
-    DARK_RED,
     LIGHT_BROWN,
     DARK_BROWN
   };
@@ -36,85 +34,91 @@ getRGBColour(enum Colour colour, byte RGB[]){
  switch(colour){
   default:
   case BLACK:
-    RGB = {0, 0, 0};
+    setRGBArray(RGB, 0, 0, 0);
     break;
   case WHITE:
-    RGB = {255, 255, 255};
+    setRGBArray(RGB, 255, 255, 255);
     break;
   case LIGHT_RED:
-    RGB = {255, 51, 51};
+    setRGBArray(RGB, 255, 51, 51);
     break;
   case RED:
-    RGB = {255, 0, 0};
+    setRGBArray(RGB, 255, 0, 0);
     break;
   case DARK_RED:
-    RGB = {204, 0, 0};
+    setRGBArray(RGB, 204, 0, 0);
     break;
   case LIGHT_GREEN:
-    RGB = {0, 255, 51};
+    setRGBArray(RGB, 0, 255, 51);
     break;
   case GREEN:
-    RGB = {0, 255, 0};
+    setRGBArray(RGB, 0, 255, 0);
     break;
   case DARK_GREEN:
-    RGB = {0, 153, 0};
+    setRGBArray(RGB, 0, 153, 0);
     break;
   case LIGHT_BLUE:
-    RGB = {51, 153, 255};
+    setRGBArray(RGB, 51, 153, 255);
     break;
   case BLUE:
-    RGB = {0, 0, 255};
+    setRGBArray(RGB, 0, 0, 255);
     break;
   case DARK_BLUE:
-    RGB = {0, 0, 204};
+    setRGBArray(RGB, 0, 0, 204);
     break;
   case LIGHT_YELLOW:
-    RGB = {255, 255, 153};
+    setRGBArray(RGB, 255, 255, 153);
     break;
   case YELLOW:
-    RGB = {255, 255, 0};
+    setRGBArray(RGB, 255, 255, 0);
     break;
   case DARK_YELLOW:
-    RGB = {255, 204, 0};
+    setRGBArray(RGB, 255, 204, 0);
     break;
   case LIGHT_ORANGE:
-    RGB = {255, 153, 0};
+    setRGBArray(RGB, 255, 153, 0);
     break;
   case ORANGE:
-    RGB = {255, 102, 0};
+    setRGBArray(RGB, 255, 102, 0);
     break;
   case GOLD:
-    RGB = {255, 204, 51};
+    setRGBArray(RGB, 255, 204, 51);
     break;
   case LIGHT_GREY:
-    RGB = {204, 204, 204};
+    setRGBArray(RGB, 204, 204, 204);
     break;
   case GREY:
-    RGB = {153, 153, 153};
+    setRGBArray(RGB, 153, 153, 153);
     break;
   case DARK_GREY:
-    RGB = {102, 102, 102};
+    setRGBArray(RGB, 102, 102, 102);
     break;
   case LIGHT_BROWN:
-    RGB = {153, 102, 0};
+    setRGBArray(RGB, 153, 102, 0);
     break;
   case BROWN:
-    RGB = {102, 51, 0};
+    setRGBArray(RGB, 102, 51, 0);
     break;
   case DARK_BROWN:
-    RGB = {51, 0, 0};
+    setRGBArray(RGB, 51, 0, 0);
     break;
   case PURPLE:
-    RGB = {102, 0, 153};
+    setRGBArray(RGB, 102, 0, 153);
     break;
   }
+}
+setRGBArray(byte RGB[], int R, int G, int B){
+  RGB[0] = R;
+  RGB[1] = G;
+  RGB[2] = B;
+  
 }
 setTextColour(enum Colour colour){
   setTextColour(1, colour);
 }
 setTextColour(dword pageID, enum Colour colour){
   byte RGB[3];
-  getColour(colour, RGB);
+  getRGBColour(colour, RGB);
   WriteTextColor(pageID, RGB[0], RGB[1], RGB[2]);
 }
 setBackgroungColour(enum Colour colour){
@@ -122,7 +126,7 @@ setBackgroungColour(enum Colour colour){
 }
 setBackgroungColour(dword pageID, enum Colour colour){
   byte RGB[3];
-  getColour(colour, RGB);
+  getRGBColour(colour, RGB);
   WriteTextBkgColor(pageID, RGB[0], RGB[1], RGB[2]);
 }
 setColour(enum Colour colour){
