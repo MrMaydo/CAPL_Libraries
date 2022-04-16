@@ -148,3 +148,108 @@ setTimeForward(byte destDate[], byte srcDate[], byte addDays, byte addHours, byt
   destDate[0] = year;
 }
 
+setTimeBackward_Days(byte destDate[], byte srcDate[], byte subDays){
+  setTimeBackward(destDate, srcDate, subDays, 0, 0, 0);
+}
+setTimeBackward_Hours(byte destDate[], byte srcDate[], byte subHours){
+  setTimeBackward(destDate, srcDate, 0, subHours, 0, 0);
+}
+setTimeBackward_minutes(byte destDate[], byte srcDate[], byte subMinutes){
+  setTimeBackward(destDate, srcDate, 0, 0, subMinutes, 0);
+}
+setTimeBackward_seconds(byte destDate[], byte srcDate[], byte subSeconds){
+  setTimeBackward(destDate, srcDate, 0, 0, 0, subSeconds);
+}
+setTimeBackward(byte destDate[], byte srcDate[], byte subDays, byte subHours, byte subMinutes, byte subSeconds){
+  word year, srcYear;
+  byte month, day, hours, minutes, seconds;
+  int oneMonthPrior_daysNumber, twoMonthsPrior_daysNumber;
+  
+  byte srcMonth, srcDay, srcHours, srcMinutes, srcSeconds;
+  byte minutesFromSeconds, hoursFromMinutes, daysFromHours;
+  ////////////////////////////////////////
+
+  srcYear = srcDate[0] + PC_baseYear;
+  srcMonth = srcDate[1];
+  srcDay = srcDate[2];
+  srcHours = srcDate[3];
+  srcMinutes = srcDate[4];
+  srcSeconds = srcDate[5];
+  
+  ////////////////////////////////////////
+  seconds = (60 + srcSeconds - subSeconds) % 60;
+  minutesFromSeconds = (59 + subSeconds - srcSeconds + 59) / 60;
+  
+  minutes = (60 + srcMinutes - (subMinutes + minutesFromSeconds)) % 60;
+  hoursFromMinutes = (59 + subMinutes - minutesFromSeconds ) / 60;
+  
+  hours = (24 + srcHours - (subHours + hoursFromMinutes)) % 24;
+  daysFromHours = (23 + subHours - srcHours) / 24;
+  
+  subDays = subDays + daysFromHours;
+  month = srcMonth;
+  year = srcYear;
+  
+  ////////////////////////////////////////
+  oneMonthPrior_daysNumber = 0; 
+  twoMonthsPrior_daysNumber = 0;
+  if (srcDay < (1 + subDays) && (month == JANUARY || month == JUNE || month == AUGUST || month == NOVEMBER)){   
+    decreaseMonth(month, year);
+    oneMonthPrior_daysNumber = getNumberOfDaysInMonth(month, year);
+    
+    if((oneMonthPrior_daysNumber + srcDay) < (1 + subDays)){
+      decreaseMonth(month, year);
+      twoMonthsPrior_daysNumber = getNumberOfDaysInMonth(month, year);
+    }
+  }
+  else if (srcDay < (1 + subDays) && (month == FEBRUARY || month == SEPTEMBER)){
+    decreaseMonth(month, year);
+    oneMonthPrior_daysNumber = getNumberOfDaysInMonth(month, year);
+    
+    if((oneMonthPrior_daysNumber + srcDay) < (1 + subDays)){
+      decreaseMonth(month, year);
+      twoMonthsPrior_daysNumber = getNumberOfDaysInMonth(month, year);
+    }
+  }
+  else if (srcDay < (1 + subDays) && (month == MAY || month == JULY  || month == OCTOBER  || month == DECEMBER)){
+    decreaseMonth(month, year);
+    oneMonthPrior_daysNumber = getNumberOfDaysInMonth(month, year);
+    
+    if((oneMonthPrior_daysNumber + srcDay) < (1 + subDays)){
+      decreaseMonth(month, year);
+      twoMonthsPrior_daysNumber = getNumberOfDaysInMonth(month, year);
+    }
+  }
+  
+  else if (month == MARCH && srcDay < (1 + subDays)){
+    decreaseMonth(month, year);
+    oneMonthPrior_daysNumber = getNumberOfDaysInMonth(month, year);
+    
+    if((oneMonthPrior_daysNumber + srcDay) < (1 + subDays)){
+      decreaseMonth(month, year);
+      twoMonthsPrior_daysNumber = getNumberOfDaysInMonth(month, year);
+    }
+  }
+  else if (month == APRIL && srcDay < (1 + subDays)){
+    decreaseMonth(month, year);
+    oneMonthPrior_daysNumber = getNumberOfDaysInMonth(month, year);
+    
+    if((oneMonthPrior_daysNumber + srcDay) < (1 + subDays)){
+      decreaseMonth(month, year);
+      twoMonthsPrior_daysNumber = getNumberOfDaysInMonth(month, year);
+    }
+  }
+  
+  day = twoMonthsPrior_daysNumber + oneMonthPrior_daysNumber + srcDay - subDays;
+  
+  ////////////////////////////////////////
+  
+  year = year - PC_baseYear;
+  destDate[5] = seconds;
+  destDate[4] = minutes;
+  destDate[3] = hours;
+  destDate[2] = day; 
+  destDate[1] = month;
+  destDate[0] = year;
+}
+
