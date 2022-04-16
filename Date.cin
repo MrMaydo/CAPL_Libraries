@@ -32,3 +32,15 @@ variables
     SUNDAY    = 7    
   };
 }
+
+getCurrentLocalDate(byte date[]){
+ long localTime[9];
+  getLocalTime(localTime);
+  
+  date[5] = localTime[0];     //seconds
+  date[4] = localTime[1];     //minutes
+  date[3] = localTime[2];     //hours
+  date[2] = localTime[3];     //day
+  date[1] = localTime[4] + 1; //month
+  date[0] = localTime[5];     //year 
+}
