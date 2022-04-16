@@ -52,7 +52,7 @@ getRGBColour(enum Colour colour, byte RGB[]){
     setRGBArray(RGB, 0, 255, 51);
     break;
   case GREEN:
-    setRGBArray(RGB, 0, 255, 0);
+    setRGBArray(RGB, 0, 204, 0);
     break;
   case DARK_GREEN:
     setRGBArray(RGB, 0, 153, 0);
@@ -107,12 +107,13 @@ getRGBColour(enum Colour colour, byte RGB[]){
     break;
   }
 }
+
 setRGBArray(byte RGB[], int R, int G, int B){
   RGB[0] = R;
   RGB[1] = G;
   RGB[2] = B;
-  
 }
+
 setTextColour(enum Colour colour){
   setTextColour(1, colour);
 }
@@ -121,6 +122,7 @@ setTextColour(dword pageID, enum Colour colour){
   getRGBColour(colour, RGB);
   WriteTextColor(pageID, RGB[0], RGB[1], RGB[2]);
 }
+
 setBackgroungColour(enum Colour colour){
   setBackgroungColour(1, colour);
 }
@@ -128,8 +130,4 @@ setBackgroungColour(dword pageID, enum Colour colour){
   byte RGB[3];
   getRGBColour(colour, RGB);
   WriteTextBkgColor(pageID, RGB[0], RGB[1], RGB[2]);
-}
-setColour(enum Colour colour){
-  setBackgroungColour(colour);
-  setTextColour(colour);
 }
