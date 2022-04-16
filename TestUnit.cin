@@ -11,6 +11,19 @@ variables
     FAILED = 0,
     PASSED = 1
   };
+  enum Write_Sink
+  {
+    SYSTEM = 0,
+    CAPL = 1,
+    TEST = 4
+  };
+  enum Write_Severity
+  {
+    SUCCESS = 0,
+    INFORMATION = 1,
+    WARNING = 2,
+    ERROR = 3
+  };
 }
 
 assertEquals(int expected, int given, char action[]){
@@ -30,21 +43,22 @@ setVerdict(int result, char action[]){
     setPassedColour();
   else
     setFailedColour();
-  write("%s %s", action, ((enum Verdict) result).name());
+  writeLineEx(TEST, INFORMATION,"%s %s", action, ((enum Verdict) result).name());
   setDefaultColour();
 }
 
 setDefaultColour(){
-  setBackgroungColour(WHITE);
-  setTextColour(BLACK);
+  setBackgroungColour(TEST, WHITE);
+  setTextColour(TEST, BLACK);
 }
 
 setPassedColour(){
-  setBackgroungColour(WHITE);
-  setTextColour(GREEN);
+  setBackgroungColour(TEST, WHITE);
+  setTextColour(TEST, GREEN);
 }
 
 setFailedColour(){
-  setBackgroungColour(WHITE);
-  setTextColour(RED);
+  setBackgroungColour(TEST, WHITE);
+  setTextColour(TEST, RED);
 }
+
