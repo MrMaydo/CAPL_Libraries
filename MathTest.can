@@ -1,0 +1,12 @@
+/*@!Encoding:1250*/
+includes
+{  
+  #include "Math.cin"
+  #include "TestUnit.cin"
+}
+
+variables
+{
+  
+}
+
