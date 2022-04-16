@@ -51,3 +51,7 @@ printCurrentLocalDate(){
   getCurrentLocalDate(date);
   write("Local Time: %ld-%02ld-%02ld T %02ld:%02ld:%02ld", (date[0] + PC_baseYear), date[1], date[2], date[3], date[4], date[5]);
 }
+
+byte isLeapYear(word year){
+  return ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0));
+}
