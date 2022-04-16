@@ -29,6 +29,18 @@ variables
 assertEquals(int expected, int given, char action[]){
   setVerdict((expected == given), action);
 }
+assertEquals(byte expected[], byte given[], char action[]){
+  int result, i;
+  result = 1;
+  
+  for(i = 0; i < elCount(expected); i++){
+    if(expected[i] != given[i]){
+      result = 0;
+      break;
+    }
+  }
+  setVerdict((expected == given), action);
+}
 
 assertTrue(int given, char action[]){
   setVerdict((given != 0), action);
