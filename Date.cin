@@ -6,6 +6,7 @@ includes
 
 variables
 {
+  const long PC_baseYear = 1900;
   enum Month
   {
     JANUARY = 0x01,
@@ -43,4 +44,10 @@ getCurrentLocalDate(byte date[]){
   date[2] = localTime[3];     //day
   date[1] = localTime[4] + 1; //month
   date[0] = localTime[5];     //year 
+}
+
+printCurrentLocalDate(){
+  byte date[6];
+  getCurrentLocalDate(date);
+  write("Local Time: %ld-%02ld-%02ld T %02ld:%02ld:%02ld", (date[0] + PC_baseYear), date[1], date[2], date[3], date[4], date[5]);
 }
