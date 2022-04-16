@@ -27,9 +27,24 @@ assertFail(int given, char action[]){
 
 setVerdict(int result, char action[]){
   if(result)
-    setColour(GREEN);
+    setPassedColour();
   else
-    setColour(RED);
-  write("%s %s", ((enum Verdict) result).name());
-  setColour(BLACK);
+    setFailedColour();
+  write("%s %s", action, ((enum Verdict) result).name());
+  setDefaultColour();
+}
+
+setDefaultColour(){
+  setBackgroungColour(WHITE);
+  setTextColour(BLACK);
+}
+
+setPassedColour(){
+  setBackgroungColour(WHITE);
+  setTextColour(GREEN);
+}
+
+setFailedColour(){
+  setBackgroungColour(WHITE);
+  setTextColour(RED);
 }
