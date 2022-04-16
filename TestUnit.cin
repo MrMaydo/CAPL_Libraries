@@ -1,0 +1,35 @@
+/*@!Encoding:1250*/
+includes
+{
+  #include "Colour.cin"
+}
+
+variables
+{
+  enum Verdict
+  {
+    FAILED = 0,
+    PASSED = 1
+  };
+}
+
+assertEquals(int expected, int given, char action[]){
+  setVerdict((expected == given), action);
+}
+
+assertTrue(int given, char action[]){
+  setVerdict((given != 0), action);
+}
+
+assertFail(int given, char action[]){
+  setVerdict((given == 0), action);
+}
+
+setVerdict(int result, char action[]){
+  if(result)
+    setColour(GREEN);
+  else
+    setColour(RED);
+  write("%s %s", ((enum Verdict) result).name());
+  setColour(BLACK);
+}
