@@ -55,3 +55,20 @@ printCurrentLocalDate(){
 byte isLeapYear(word year){
   return ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0));
 }
+decreaseMonth(byte& month, word& year){
+  if (month == JANUARY){
+    month = DECEMBER;
+    year--;
+  }
+  else
+    month--;
+}
+
+increaseMonth(byte& month, word& year){
+  if (month == DECEMBER){
+    month = JANUARY;
+    year++;
+  }
+  else
+    month++;
+}
