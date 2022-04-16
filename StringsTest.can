@@ -17,6 +17,7 @@ void MainTest ()
 
 testcase compareStrings_Test()
 {
+  printTestCaseTitle();
   assertTrue(compareStrings("abc", "abc"), "compareStrings(\"abc\", \"abc\")");
   assertTrue(compareStrings("ABC", "ABC"), "compareStrings(\"ABC\", \"ABC\")");
   assertFail(compareStrings("ABC", "abc"), "compareStrings(\"ABC\", \"abc\")");
