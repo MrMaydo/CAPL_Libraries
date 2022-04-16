@@ -62,3 +62,8 @@ setFailedColour(){
   setTextColour(TEST, RED);
 }
 
+printTestCaseTitle(){
+  char title[150];
+  testGetCurrentTestCaseTitle(title, elCount(title));
+  writeLineEx(TEST, INFORMATION,"%s",title);
+}
