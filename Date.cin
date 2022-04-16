@@ -72,3 +72,19 @@ increaseMonth(byte& month, word& year){
   else
     month++;
 }
+
+byte getNumberOfDaysInMonth(byte month, word year){
+  if (month == FEBRUARY && isLeapYear(year) == 1)
+    return  29;
+  
+  if (month == FEBRUARY && isLeapYear(year) == 0)
+    return  28;
+  
+  if (month == APRIL || month == JUNE || month == SEPTEMBER || month == NOVEMBER )
+    return 30;
+  
+  if (month == JANUARY || month == MARCH || month == MAY || month == JULY || month == AUGUST || month == OCTOBER || month == DECEMBER)
+    return 31;
+  
+  return 0;
+}
