@@ -6,6 +6,19 @@ includes
 
 variables
 {
-  
+  enum Month
+  {
+    JANUARY = 0x01,
+    FEBRUARY = 0X02,
+    MARCH = 0X03,
+    APRIL = 0X04,
+    MAY = 0X05,
+    JUNE = 0X06,
+    JULY = 0X07,
+    AUGUST = 0X08,
+    SEPTEMBER = 0X09,
+    OCTOBER = 0X0A,
+    NOVEMBER = 0X0B,
+    DECEMBER = 0X0C
+  }
 }
-
