@@ -88,3 +88,63 @@ byte getNumberOfDaysInMonth(byte month, word year){
   
   return 0;
 }
+
+setTimeForward_Days(byte destDate[], byte srcDate[], byte addDays){
+  setTimeForward(destDate, srcDate, addDays, 0, 0, 0);
+}
+setTimeForward_Hours(byte destDate[], byte srcDate[], byte addHours){
+  setTimeForward(destDate, srcDate, 0, addHours, 0, 0);
+}
+
+setTimeForward_minutes(byte destDate[], byte srcDate[], byte addMinutes){
+  setTimeForward(destDate, srcDate, 0, 0, addMinutes, 0);
+}
+setTimeForward_seconds(byte destDate[], byte srcDate[], byte addSeconds){
+  setTimeForward(destDate, srcDate, 0, 0, 0, addSeconds);
+}
+setTimeForward(byte destDate[], byte srcDate[], byte addDays, byte addHours, byte addMinutes, byte addSeconds){
+  word year, srcYear;
+  byte month, day, hours, minutes, seconds;
+  byte srcMonth, srcDay, srcHours, srcMinutes, srcSeconds;
+  byte minutesFromSeconds, hoursFromMinutes, daysFromHours, monthsFromDays;
+  byte daysInMonth;
+  
+  year = srcDate[0] + PC_baseYear;
+  month = srcDate[1];
+  srcDay = srcDate[2];
+  srcHours = srcDate[3];
+  srcMinutes = srcDate[4];
+  srcSeconds = srcDate[5];
+  
+  ////////////////////////////////////////
+  seconds = (srcSeconds + addSeconds) % 60;
+  minutesFromSeconds = (srcSeconds + addSeconds) / 60;
+  
+  minutes = (srcMinutes + addMinutes + minutesFromSeconds) % 60;
+  hoursFromMinutes = (srcMinutes + addMinutes + minutesFromSeconds) / 60;
+  
+  hours = (srcHours + addHours + hoursFromMinutes) % 24;
+  daysFromHours = (srcHours + addHours + hoursFromMinutes) / 24;
+  
+  daysInMonth = getNumberOfDaysInMonth(srcMonth, srcYear);
+  
+  day = (srcDay + addDays + daysFromHours) % daysInMonth;
+  monthsFromDays = (srcDay + addDays + daysFromHours) / daysInMonth;
+  
+  if (monthsFromDays == 1)
+    increaseMonth(srcMonth, srcYear);
+  
+  month  = srcMonth;
+  year = srcYear;
+    
+  ////////////////////////////////////////
+
+  year = year - PC_baseYear;
+  destDate[5] = seconds;
+  destDate[4] = minutes;
+  destDate[3] = hours;
+  destDate[2] = day; 
+  destDate[1] = month;
+  destDate[0] = year;
+}
+
