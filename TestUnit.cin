@@ -6,6 +6,8 @@ includes
 
 variables
 {
+  int tcPassed;
+  int tcFailed;
   enum Verdict
   {
     FAILED = 0,
@@ -52,10 +54,14 @@ assertFail(int given, char action[]){
 }
 
 setVerdict(int result, char action[]){
-  if(result)
+  if(result){
     setPassedColour();
-  else
+    tcPassed++;
+  }
+  else{
     setFailedColour();
+    tcFailed++;
+  }
   writeLineEx(TEST, INFORMATION,"%s %s", action, ((enum Verdict) result).name());
   setDefaultColour();
 }
@@ -79,4 +85,17 @@ printTestCaseTitle(){
   char title[150];
   testGetCurrentTestCaseTitle(title, elCount(title));
   writeLineEx(TEST, INFORMATION,"%s",title);
+}
+
+printTestSummary(){
+  int tc_executed;
+  tc_executed = tcPassed + tcFailed;
+  setPassedColour();
+  writeLineEx(TEST, INFORMATION, "Test Cases Passed: %d/%d", tcPassed, tc_executed);
+  setFailedColour();
+  writeLineEx(TEST, INFORMATION, "Test Cases Failed: %d/%d", tcFailed, tc_executed);
+  setDefaultColour();
+  
+  tcPassed = 0;
+  tcFailed = 0;
 }
