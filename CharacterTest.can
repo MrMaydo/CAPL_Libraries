@@ -1,7 +1,6 @@
 /*@!Encoding:1250*/
 includes
 {
-  
   #include "Character.cin"
   #include "TestUnit.cin"
 }
@@ -19,6 +18,7 @@ void MainTest ()
   isDigit_Test();
   isLetter_Test();
   isLetterOrDigit_Test();
+  isHexChar_Test();
 }
 
 testcase isLowerCase_Test(){
@@ -39,6 +39,7 @@ testcase isLowerCase_Test(){
   assertFail(isLowerCase(' '), "isLowerCase(' ')");
   assertFail(isLowerCase('}'), "isLowerCase('}')");
   assertFail(isLowerCase('\\'), "isLowerCase('\\')");
+  printTestSummary();
 }
 
 testcase isUpperCase_Test(){
@@ -59,6 +60,7 @@ testcase isUpperCase_Test(){
   assertFail(isUpperCase(' '), "isUpperCase(' ')");
   assertFail(isUpperCase('}'), "isUpperCase('}')");
   assertFail(isUpperCase('\\'), "isUpperCase('\\')");
+  printTestSummary();
 }
 
 testcase isDigit_Test(){
@@ -70,6 +72,7 @@ testcase isDigit_Test(){
   assertFail(isDigit(' '), "isDigit(' ')");
   assertFail(isDigit('}'), "isDigit('}')");
   assertFail(isDigit('\\'), "isDigit('\\')");
+  printTestSummary();
 }
 
 
@@ -83,6 +86,7 @@ testcase isLetter_Test(){
   assertFail(isLetter(' '), "isLetter(' ')");
   assertFail(isLetter('}'), "isLetter('}')");
   assertFail(isLetter('\\'), "isLetter('\\')");
+  printTestSummary();
 }
 
 testcase isLetterOrDigit_Test(){
@@ -95,4 +99,23 @@ testcase isLetterOrDigit_Test(){
   assertFail(isLetterOrDigit(' '), "isLetterOrDigit(' ')");
   assertFail(isLetterOrDigit('}'), "isLetterOrDigit('}')");
   assertFail(isLetterOrDigit('\\'), "isLetterOrDigit('\\')");
+  printTestSummary();
+}
+
+testcase isHexChar_Test(){
+  printTestCaseTitle();
+  assertTrue(isHexChar('0'), "isHexChar('0')");
+  assertTrue(isHexChar('9'), "isHexChar('9')");
+  assertTrue(isHexChar('a'), "isHexChar('a')");
+  assertTrue(isHexChar('A'), "isHexChar('A')");
+  assertTrue(isHexChar('f'), "isHexChar('f')");
+  assertTrue(isHexChar('F'), "isHexChar('F')");
+  assertFail(isHexChar('g'), "isHexChar('g')");
+  assertFail(isHexChar('G'), "isHexChar('G')");
+  assertFail(isHexChar('ą'), "isHexChar('ą')");
+  assertFail(isHexChar('Ą'), "isHexChar('Ą')");
+  assertFail(isHexChar(' '), "isHexChar(' ')");
+  assertFail(isHexChar('}'), "isHexChar('}')");
+  assertFail(isHexChar('\\'), "isHexChar('\\')");
+  printTestSummary();
 }
