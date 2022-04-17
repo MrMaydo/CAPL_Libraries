@@ -1,0 +1,29 @@
+/*@!Encoding:1250*/
+includes
+{
+  
+  #include "Characer.cin"
+  #include "TestUnit.cin"
+}
+
+variables
+{
+  
+}
+
+
+void MainTest ()
+{
+  isLowerCase_Test();
+}
+
+testcase isLowerCase_Test()
+{
+  printTestCaseTitle();
+  assertTrue(isLowerCase('a'), "isLowerCase_Test('a')");
+  assertFail(isLowerCase('A'), "isLowerCase_Test('a')");
+  assertFail(isLowerCase('1'), "isLowerCase_Test('a')");
+  assertFail(isLowerCase(' '), "isLowerCase_Test('a')");
+  assertFail(isLowerCase('}'), "isLowerCase_Test('a')");
+  assertFail(isLowerCase('\0'), "isLowerCase_Test('a')");
+}
