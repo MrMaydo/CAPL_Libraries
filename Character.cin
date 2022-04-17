@@ -7,13 +7,13 @@ variables
 byte isLowerCase(char ch){
   char strch[1];
   strch[0] = ch;
-  return (str_match_regex(strch, "[a-z].*") == 1); // In case of the single characters it works only with [].* // For Strings it should be []*
+  return (str_match_regex(strch, "[a-z¹æê³ñóœŸ¿].*") == 1); // In case of the single characters it works only with [].* // For Strings it should be []*
 }
 
 byte isUpperCase(char ch){
   char strch[1];
   strch[0] = ch;
-  return (str_match_regex(strch, "[A-Z].*") == 1); // In case of the single characters it works only with [].*  // For Strings it should be []*
+  return (str_match_regex(strch, "[A-Z¥ÆÊ£ÑÓŒ¯].*") == 1); // In case of the single characters it works only with [].*  // For Strings it should be []*
 }
 
 byte isLetter(char ch){
