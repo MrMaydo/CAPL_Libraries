@@ -29,6 +29,7 @@ variables
 assertEquals(int expected, int given, char action[]){
   setVerdict((expected == given), action);
 }
+
 assertEquals(byte expected[], byte given[], char action[]){
   int result, i;
   result = 1;
@@ -39,7 +40,7 @@ assertEquals(byte expected[], byte given[], char action[]){
       break;
     }
   }
-  setVerdict((expected == given), action);
+  setVerdict(result, action);
 }
 
 assertTrue(int given, char action[]){
