@@ -24,6 +24,7 @@ testcase compareStrings_Test()
   assertFail(compareStrings("abcx", "abc"), "compareStrings(\"abcx\", \"abc\")");
   assertFail(compareStrings("abc", "abcx"), "compareStrings(\"abc\", \"abcx\")");
   assertFail(compareStrings("abxd", "abcx"), "compareStrings(\"abxd\", \"abcx\")");
+  printTestSummary();
 }
 
 
