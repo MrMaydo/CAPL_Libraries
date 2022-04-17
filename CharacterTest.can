@@ -15,14 +15,84 @@ variables
 void MainTest ()
 {
   isLowerCase_Test();
+  isUpperCase_Test();
+  isDigit_Test();
+  isLetter_Test();
+  isLetterOrDigit_Test();
 }
 
-testcase isLowerCase_Test()
-{
+testcase isLowerCase_Test(){
   printTestCaseTitle();
-  assertTrue(isLowerCase('a'), "isLowerCase_Test('a')");
-  assertFail(isLowerCase('A'), "isLowerCase_Test('A')");
-  assertFail(isLowerCase('1'), "isLowerCase_Test('1')");
-  assertFail(isLowerCase(' '), "isLowerCase_Test(' ')");
-  assertFail(isLowerCase('}'), "isLowerCase_Test('}')");
+  assertTrue(isLowerCase('a'), "isLowerCase('a')");
+  assertTrue(isLowerCase('π'), "isLowerCase('π')");
+  assertTrue(isLowerCase('Ê'), "isLowerCase('Ê')");
+  assertTrue(isLowerCase('Í'), "isLowerCase('Í')");
+  assertTrue(isLowerCase('≥'), "isLowerCase('≥')");
+  assertTrue(isLowerCase('Ò'), "isLowerCase('Ò')");
+  assertTrue(isLowerCase('Û'), "isLowerCase('Û')");
+  assertTrue(isLowerCase('ú'), "isLowerCase('ú')");
+  assertTrue(isLowerCase('ü'), "isLowerCase('ü')");
+  assertTrue(isLowerCase('ø'), "isLowerCase('ø')");
+  assertFail(isLowerCase('A'), "isLowerCase('A')");
+  assertFail(isLowerCase('•'), "isLowerCase('•')");
+  assertFail(isLowerCase('1'), "isLowerCase('1')");
+  assertFail(isLowerCase(' '), "isLowerCase(' ')");
+  assertFail(isLowerCase('}'), "isLowerCase('}')");
+  assertFail(isLowerCase('\\'), "isLowerCase('\\')");
+}
+
+testcase isUpperCase_Test(){
+  printTestCaseTitle();
+  assertTrue(isUpperCase('A'), "isUpperCase('A')");
+  assertTrue(isUpperCase('•'), "isUpperCase('•')");
+  assertTrue(isUpperCase('∆'), "isUpperCase('∆')");
+  assertTrue(isUpperCase(' '), "isUpperCase(' ')");
+  assertTrue(isUpperCase('£'), "isUpperCase('£')");
+  assertTrue(isUpperCase('—'), "isUpperCase('—')");
+  assertTrue(isUpperCase('”'), "isUpperCase('”')");
+  assertTrue(isUpperCase('å'), "isUpperCase('å')");
+  assertTrue(isUpperCase('è'), "isUpperCase('è')");
+  assertTrue(isUpperCase('Ø'), "isUpperCase('Ø')");
+  assertFail(isUpperCase('a'), "isUpperCase('a')");
+  assertFail(isUpperCase('π'), "isUpperCase('π')");
+  assertFail(isUpperCase('1'), "isUpperCase('1')");
+  assertFail(isUpperCase(' '), "isUpperCase(' ')");
+  assertFail(isUpperCase('}'), "isUpperCase('}')");
+  assertFail(isUpperCase('\\'), "isUpperCase('\\')");
+}
+
+testcase isDigit_Test(){
+  printTestCaseTitle();
+  assertTrue(isDigit('1'), "isDigit('1')");
+  assertTrue(isDigit('9'), "isDigit('9')");
+  assertFail(isDigit('a'), "isDigit('a')");
+  assertFail(isDigit('A'), "isDigit('A')");
+  assertFail(isDigit(' '), "isDigit(' ')");
+  assertFail(isDigit('}'), "isDigit('}')");
+  assertFail(isDigit('\\'), "isDigit('\\')");
+}
+
+
+testcase isLetter_Test(){
+  printTestCaseTitle();
+  assertTrue(isLetter('a'), "isLetter('a')");
+  assertTrue(isLetter('A'), "isLetter('A')");
+  assertTrue(isLetter('π'), "isLetter('π')");
+  assertTrue(isLetter('•'), "isLetter('•')");
+  assertFail(isLetter('1'), "isLetter('1')");
+  assertFail(isLetter(' '), "isLetter(' ')");
+  assertFail(isLetter('}'), "isLetter('}')");
+  assertFail(isLetter('\\'), "isLetter('\\')");
+}
+
+testcase isLetterOrDigit_Test(){
+  printTestCaseTitle();
+  assertTrue(isLetterOrDigit('a'), "isLetterOrDigit('a')");
+  assertTrue(isLetterOrDigit('A'), "isLetterOrDigit('A')");
+  assertTrue(isLetterOrDigit('π'), "isLetterOrDigit('π')");
+  assertTrue(isLetterOrDigit('•'), "isLetterOrDigit('π')");
+  assertTrue(isLetterOrDigit('1'), "isLetterOrDigit('1')");
+  assertFail(isLetterOrDigit(' '), "isLetterOrDigit(' ')");
+  assertFail(isLetterOrDigit('}'), "isLetterOrDigit('}')");
+  assertFail(isLetterOrDigit('\\'), "isLetterOrDigit('\\')");
 }
