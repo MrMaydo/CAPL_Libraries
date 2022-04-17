@@ -13,10 +13,10 @@ variables
 void MainTest ()
 {
   compareStrings_Test();
+  isPalindrome_Test();
 }
 
-testcase compareStrings_Test()
-{
+testcase compareStrings_Test(){
   printTestCaseTitle();
   assertTrue(compareStrings("abc", "abc"), "compareStrings(\"abc\", \"abc\")");
   assertTrue(compareStrings("ABC", "ABC"), "compareStrings(\"ABC\", \"ABC\")");
@@ -27,4 +27,14 @@ testcase compareStrings_Test()
   printTestSummary();
 }
 
-
+testcase isPalindrome_Test(){
+  printTestCaseTitle();
+  assertTrue(isPalindrome("kotok"), "isPalindrome(\"kotok\")");
+  assertTrue(isPalindrome("kottok"), "isPalindrome(\"kottok\")");
+  assertFail(isPalindrome("kotkok"), "isPalindrome(\"kotkok\")");
+  assertFail(isPalindrome("abcde"), "isPalindrome(\"abcde\")");
+  assertFail(isPalindrome("abcdba"), "isPalindrome(\"abcdba\")");
+  assertTrue(isPalindrome("101"), "isPalindrome(\"101\")");
+  assertFail(isPalindrome(""), "isPalindrome(\"\")");
+  printTestSummary();
+}
