@@ -29,3 +29,9 @@ byte isDigit(char ch){
 byte isLetterOrDigit(char ch){
   return (isLetter(ch) || isDigit(ch));
 }
+
+byte isHexChar(char ch){
+  char strch[1];
+  strch[0] = ch;
+  return (str_match_regex(strch, "[0-9a-fA-F].*") == 1); // In case of the single characters it works only with [].* // For Strings it should be []*
+}
