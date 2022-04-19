@@ -1,8 +1,8 @@
 /*@!Encoding:1250*/
 includes
 {
-  #include "Strings.cin"
-  #include "TestUnit.cin"
+  #include "..\main\Strings.cin"
+  #include "..\main\TestUnit.cin"
 }
 
 variables
