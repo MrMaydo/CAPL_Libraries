@@ -49,3 +49,7 @@ byte startsWith(char string[], char beginning[]){
 upper(char string[]){
   toUpper(string, string, elCount(string));
 }
+
+lower(char string[]){
+  toLower(string, string, elCount(string));
+}

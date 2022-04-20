@@ -18,6 +18,7 @@ void MainTest ()
   endsWith_Test();
   startsWith_Test();
   upper_Test();
+  lower_Test();
   printTotalSummary();
 }
 
@@ -97,4 +98,38 @@ upper_Test5(){
   char string[100] = "piESek";
   upper(string);
   assertFail(compareStrings(string, "piESek"), "upper(\"piESek\")");
+}
+testcase lower_Test(){
+  printTestCaseTitle();
+  lower_Test1();
+  lower_Test2();
+  lower_Test3();
+  lower_Test4();
+  lower_Test5();
+  printTestSummary();
+}
+lower_Test1(){
+  char string[100] = "KOTEK";
+  lower(string);
+  assertTrue(compareStrings(string, "kotek"), "lower(\"KOTEK\")");
+}
+lower_Test2(){
+  char string[100] = "KOteK";
+  lower(string);
+  assertTrue(compareStrings(string, "kotek"), "lower(\"KOteK\")");
+}
+lower_Test3(){
+  char string[100] = "kotek";
+  lower(string);
+  assertTrue(compareStrings(string, "kotek"), "lower(\"kotek\")");
+}
+lower_Test4(){
+  char string[100] = "PIESEK";
+  lower(string);
+  assertFail(compareStrings(string, "PIESEK"), "lower(\"PIESEK\")");
+}
+lower_Test5(){
+  char string[100] = "PIesEK";
+  lower(string);
+  assertFail(compareStrings(string, "PIesEK"), "lower(\"PIesEK\")");
 }
