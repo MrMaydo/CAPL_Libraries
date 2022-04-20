@@ -12,10 +12,12 @@ variables
 
 void MainTest ()
 {
+  setInitial();
   compareStrings_Test();
   isPalindrome_Test();
   endsWith_Test();
   startsWith_Test();
+  printTotalSummary();
 }
 
 testcase compareStrings_Test(){

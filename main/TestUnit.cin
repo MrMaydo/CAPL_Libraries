@@ -8,6 +8,8 @@ variables
 {
   int tcPassed;
   int tcFailed;
+  int totalPassed;
+  int totalFailed;
   enum Verdict
   {
     FAILED = 0,
@@ -57,10 +59,12 @@ setVerdict(int result, char action[]){
   if(result){
     setPassedColour();
     tcPassed++;
+    totalPassed++;
   }
   else{
     setFailedColour();
     tcFailed++;
+    totalFailed++;
   }
   writeLineEx(TEST, INFORMATION,"%s %s", action, ((enum Verdict) result).name());
   setDefaultColour();
@@ -99,4 +103,25 @@ printTestSummary(){
   
   tcPassed = 0;
   tcFailed = 0;
+}
+
+printTotalSummary(){
+  int total_executed;
+  total_executed = totalPassed + totalFailed;
+  setPassedColour();
+  writeLineEx(TEST, INFORMATION, "Test Cases Passed in total: %d/%d", totalPassed, total_executed);
+  setFailedColour();
+  writeLineEx(TEST, INFORMATION, "Test Cases Failed in total: %d/%d", totalFailed, total_executed);
+  setDefaultColour();
+  
+  totalPassed = 0;
+  totalFailed = 0;
+}
+
+setInitial(){
+  tcPassed = 0;
+  tcFailed = 0;
+ 
+  totalPassed = 0;
+  totalFailed = 0;
 }

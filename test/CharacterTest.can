@@ -13,12 +13,14 @@ variables
 
 void MainTest ()
 {
+  setInitial();
   isLowerCase_Test();
   isUpperCase_Test();
   isDigit_Test();
   isLetter_Test();
   isLetterOrDigit_Test();
   isHexChar_Test();
+  printTotalSummary();
 }
 
 testcase isLowerCase_Test(){

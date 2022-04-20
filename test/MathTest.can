@@ -12,8 +12,10 @@ variables
 
 void MainTest ()
 {
+  setInitial();
   min_Test();
   max_Test();
+  printTotalSummary();
 }
 
 testcase min_Test(){
