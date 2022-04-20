@@ -73,6 +73,9 @@ testcase upper_Test(){
   upper_Test3();
   upper_Test4();
   upper_Test5();
+  upper_Test6();
+  upper_Test7();
+  upper_Test8();
   printTestSummary();
 }
 upper_Test1(){
@@ -91,14 +94,29 @@ upper_Test3(){
   assertTrue(compareStrings(string, "KOTEK"), "upper(\"KOTEK\")");
 }
 upper_Test4(){
-  char string[100] = "piesek";
+  char string[100] = "kot i pies";
   upper(string);
-  assertFail(compareStrings(string, "piesek"), "upper(\"piesek\")");
+  assertTrue(compareStrings(string, "KOT I PIES"), "upper(\"kot i pies\")");
 }
 upper_Test5(){
-  char string[100] = "piESek";
+  char string[100] = "Kot i Pies";
   upper(string);
-  assertFail(compareStrings(string, "piESek"), "upper(\"piESek\")");
+  assertTrue(compareStrings(string, "KOT I PIES"), "upper(\"Kot i Pies\")");
+}
+upper_Test6(){
+  char string[100] = "KOT I PIES";
+  upper(string);
+  assertTrue(compareStrings(string, "KOT I PIES"), "upper(\"KOT I PIES\")");
+}
+upper_Test7(){
+  char string[100] = "kotek123";
+  upper(string);
+  assertTrue(compareStrings(string, "KOTEK123"), "upper(\"kotek123\")");
+}
+upper_Test8(){
+  char string[100] = "123";
+  upper(string);
+  assertTrue(compareStrings(string, "123"), "upper(\"123\")");
 }
 testcase lower_Test(){
   printTestCaseTitle();
@@ -107,6 +125,9 @@ testcase lower_Test(){
   lower_Test3();
   lower_Test4();
   lower_Test5();
+  lower_Test6();
+  lower_Test7();
+  lower_Test8();
   printTestSummary();
 }
 lower_Test1(){
@@ -125,14 +146,29 @@ lower_Test3(){
   assertTrue(compareStrings(string, "kotek"), "lower(\"kotek\")");
 }
 lower_Test4(){
-  char string[100] = "PIESEK";
+  char string[100] = "KOT I PIES";
   lower(string);
-  assertFail(compareStrings(string, "PIESEK"), "lower(\"PIESEK\")");
+  assertTrue(compareStrings(string, "kot i pies"), "lower(\"KOT I PIES\")");
 }
 lower_Test5(){
-  char string[100] = "PIesEK";
+  char string[100] = "Kot I Pies";
   lower(string);
-  assertFail(compareStrings(string, "PIesEK"), "lower(\"PIesEK\")");
+  assertTrue(compareStrings(string, "kot i pies"), "lower(\"Kot I Pies\")");
+}
+lower_Test6(){
+  char string[100] = "kot i pies";
+  lower(string);
+  assertTrue(compareStrings(string, "kot i pies"), "lower(\"kot i pies\")");
+}
+lower_Test7(){
+  char string[100] = "KOTEK123";
+  lower(string);
+  assertTrue(compareStrings(string, "kotek123"), "lower(\"KOTEK123\")");
+}
+lower_Test8(){
+  char string[100] = "123";
+  lower(string);
+  assertTrue(compareStrings(string, "123"), "lower(\"123\")");
 }
 
 testcase capitalize_Test(){
@@ -143,6 +179,8 @@ testcase capitalize_Test(){
   capitalize_Test4();
   capitalize_Test5();
   capitalize_Test6();
+  capitalize_Test7();
+  capitalize_Test8();
   printTestSummary();
 }
 capitalize_Test1(){
@@ -174,4 +212,14 @@ capitalize_Test6(){
   char string[100] = "Kot I Pies";
   capitalize(string);
   assertTrue(compareStrings(string, "Kot i pies"), "capitalize(\"Kot I Pies\")");
+}
+capitalize_Test7(){
+  char string[100] = "koteK123";
+  capitalize(string);
+  assertTrue(compareStrings(string, "Kotek123"), "capitalize(\"koteK123\")");
+}
+capitalize_Test8(){
+  char string[100] = "123";
+  capitalize(string);
+  assertTrue(compareStrings(string, "123"), "capitalize(\"123\")");
 }
