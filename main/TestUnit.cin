@@ -64,6 +64,7 @@ setVerdict(int result, char action[]){
   }
   writeLineEx(TEST, INFORMATION,"%s %s", action, ((enum Verdict) result).name());
   setDefaultColour();
+  TestWaitForTimeout(10);
 }
 
 setDefaultColour(){
