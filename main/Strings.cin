@@ -29,3 +29,11 @@ byte isPalindrome(char string[]){
       return 0;
   return 1; 
 }
+
+byte endsWith(char string[], char ending[]){
+  char pattern[1024];
+  if(strlen(string) < strlen(ending))
+    return 0;
+  snprintf(pattern, elCount(pattern),".*%s$", ending);
+  return (str_match_regex(string, pattern) == 1);
+}

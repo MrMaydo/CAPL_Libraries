@@ -14,6 +14,7 @@ void MainTest ()
 {
   compareStrings_Test();
   isPalindrome_Test();
+  endsWith_Test();
 }
 
 testcase compareStrings_Test(){
@@ -36,5 +37,14 @@ testcase isPalindrome_Test(){
   assertFail(isPalindrome("abcdba"), "isPalindrome(\"abcdba\")");
   assertTrue(isPalindrome("101"), "isPalindrome(\"101\")");
   assertFail(isPalindrome(""), "isPalindrome(\"\")");
+  printTestSummary();
+}
+testcase endsWith_Test(){
+  printTestCaseTitle();
+  assertTrue(endsWith("kotek", "ek"), "endsWith(\"kotek\", \"ek\")");
+  assertTrue(endsWith("kotek", "kotek"), "endsWith(\"kotek\", \"kotek\")");
+  assertTrue(endsWith("pies", "ies"), "endsWith(\"pies\", \"ies\")");
+  assertFail(endsWith("kotek", "etk"), "endsWith(\"kotek\", \"etk\")");
+  assertFail(endsWith("kotek", "skotek"), "endsWith(\"kotek\", \"skotek\")");
   printTestSummary();
 }
