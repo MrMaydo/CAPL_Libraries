@@ -20,6 +20,7 @@ void MainTest ()
   upper_Test();
   lower_Test();
   capitalize_Test();
+  isAlpha_Test();
   printTotalSummary();
 }
 
@@ -222,4 +223,13 @@ capitalize_Test8(){
   char string[100] = "123";
   capitalize(string);
   assertTrue(compareStrings(string, "123"), "capitalize(\"123\")");
+}
+
+testcase isAlpha_Test(){
+  printTestCaseTitle();
+  assertTrue(isAlpha("KotoK"), "isAlpha(\"KotoK\")");
+  assertFail(isAlpha("KotoK123"), "isAlpha(\"KotoK123\")");
+  assertFail(isAlpha("Kot i pies"), "isAlpha(\"Kot i pies\")");
+  assertFail(isAlpha("123"), "isAlpha(\"123\")");
+  printTestSummary();
 }

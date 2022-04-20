@@ -1,7 +1,7 @@
 /*@!Encoding:1250*/
 includes
-{
-  
+{ 
+  #include "Character.cin"
 }
 
 variables
@@ -57,4 +57,12 @@ lower(char string[]){
 capitalize(char string[]){
   toLower(string, string, elCount(string));
   string[0] = toUpper(string[0]);
+}
+
+byte isAlpha(char string[]){
+  int i;
+  for(i = 0; i < strlen(string); i++)
+    if(!isLetter(string[i]))
+      return 0;
+  return 1;
 }
