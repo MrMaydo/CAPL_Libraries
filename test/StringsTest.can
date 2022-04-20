@@ -15,6 +15,7 @@ void MainTest ()
   compareStrings_Test();
   isPalindrome_Test();
   endsWith_Test();
+  startsWith_Test();
 }
 
 testcase compareStrings_Test(){
@@ -44,7 +45,18 @@ testcase endsWith_Test(){
   assertTrue(endsWith("kotek", "ek"), "endsWith(\"kotek\", \"ek\")");
   assertTrue(endsWith("kotek", "kotek"), "endsWith(\"kotek\", \"kotek\")");
   assertTrue(endsWith("pies", "ies"), "endsWith(\"pies\", \"ies\")");
+  assertFail(endsWith("kotek", "Ek"), "endsWith(\"kotek\", \"Ek\")");
   assertFail(endsWith("kotek", "etk"), "endsWith(\"kotek\", \"etk\")");
   assertFail(endsWith("kotek", "skotek"), "endsWith(\"kotek\", \"skotek\")");
+  printTestSummary();
+}
+testcase startsWith_Test(){
+  printTestCaseTitle();
+  assertTrue(startsWith("kotek","kot"), "startsWith(\"kotek\",\"kot\")");
+  assertTrue(startsWith("kotek","kotek"), "startsWith(\"kotek\",\"kotek\")");
+  assertTrue(startsWith("pies", "pie"), "startsWith(\"pies\", \"pie\")");
+  assertFail(startsWith("kotek", "Kot"), "startsWith(\"kotek\", \"Kot\")");
+  assertFail(startsWith("kotek", "tok"), "startsWith(\"kotek\", \"tok\")");
+  assertFail(startsWith("kotek", "kotekk"), "startsWith(\"kotek\", \"kotekk\")");
   printTestSummary();
 }

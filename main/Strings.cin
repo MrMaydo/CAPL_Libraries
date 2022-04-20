@@ -37,3 +37,11 @@ byte endsWith(char string[], char ending[]){
   snprintf(pattern, elCount(pattern),".*%s$", ending);
   return (str_match_regex(string, pattern) == 1);
 }
+
+byte startsWith(char string[], char beginning[]){
+  char pattern[1024];
+  if(strlen(string) < strlen(beginning))
+    return 0;
+  snprintf(pattern, elCount(pattern),"^%s.*", beginning);
+  return (str_match_regex(string, pattern) == 1);
+}
