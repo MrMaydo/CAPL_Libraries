@@ -19,6 +19,7 @@ void MainTest ()
   startsWith_Test();
   upper_Test();
   lower_Test();
+  capitalize_Test();
   printTotalSummary();
 }
 
@@ -132,4 +133,45 @@ lower_Test5(){
   char string[100] = "PIesEK";
   lower(string);
   assertFail(compareStrings(string, "PIesEK"), "lower(\"PIesEK\")");
+}
+
+testcase capitalize_Test(){
+  printTestCaseTitle();
+  capitalize_Test1();
+  capitalize_Test2();
+  capitalize_Test3();
+  capitalize_Test4();
+  capitalize_Test5();
+  capitalize_Test6();
+  printTestSummary();
+}
+capitalize_Test1(){
+  char string[100] = "KOTEK";
+  capitalize(string);
+  assertTrue(compareStrings(string, "Kotek"), "capitalize(\"KOTEK\")");
+}
+capitalize_Test2(){
+  char string[100] = "KOteK";
+  capitalize(string);
+  assertTrue(compareStrings(string, "Kotek"), "capitalize(\"KOteK\")");
+}
+capitalize_Test3(){
+  char string[100] = "kotek";
+  capitalize(string);
+  assertTrue(compareStrings(string, "Kotek"), "capitalize(\"kotek\")");
+}
+capitalize_Test4(){
+  char string[100] = "KOT I PIES";
+  capitalize(string);
+  assertTrue(compareStrings(string, "Kot i pies"), "capitalize(\"KOT I PIES\")");
+}
+capitalize_Test5(){
+  char string[100] = "kot i pies";
+  capitalize(string);
+  assertTrue(compareStrings(string, "Kot i pies"), "capitalize(\"kot i pies\")");
+}
+capitalize_Test6(){
+  char string[100] = "Kot I Pies";
+  capitalize(string);
+  assertTrue(compareStrings(string, "Kot i pies"), "capitalize(\"Kot I Pies\")");
 }

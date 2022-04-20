@@ -53,3 +53,8 @@ upper(char string[]){
 lower(char string[]){
   toLower(string, string, elCount(string));
 }
+
+capitalize(char string[]){
+  toLower(string, string, elCount(string));
+  string[0] = toUpper(string[0]);
+}
