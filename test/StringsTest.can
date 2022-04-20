@@ -17,6 +17,7 @@ void MainTest ()
   isPalindrome_Test();
   endsWith_Test();
   startsWith_Test();
+  upper_Test();
   printTotalSummary();
 }
 
@@ -61,4 +62,39 @@ testcase startsWith_Test(){
   assertFail(startsWith("kotek", "tok"), "startsWith(\"kotek\", \"tok\")");
   assertFail(startsWith("kotek", "kotekk"), "startsWith(\"kotek\", \"kotekk\")");
   printTestSummary();
+}
+
+testcase upper_Test(){
+  printTestCaseTitle();
+  upper_Test1();
+  upper_Test2();
+  upper_Test3();
+  upper_Test4();
+  upper_Test5();
+  printTestSummary();
+}
+upper_Test1(){
+  char string[100] = "kotek";
+  upper(string);
+  assertTrue(compareStrings(string, "KOTEK"), "upper(\"kotek\")");
+}
+upper_Test2(){
+  char string[100] = "koTEk";
+  upper(string);
+  assertTrue(compareStrings(string, "KOTEK"), "upper(\"koTEk\")");
+}
+upper_Test3(){
+  char string[100] = "KOTEK";
+  upper(string);
+  assertTrue(compareStrings(string, "KOTEK"), "upper(\"KOTEK\")");
+}
+upper_Test4(){
+  char string[100] = "piesek";
+  upper(string);
+  assertFail(compareStrings(string, "piesek"), "upper(\"piesek\")");
+}
+upper_Test5(){
+  char string[100] = "piESek";
+  upper(string);
+  assertFail(compareStrings(string, "piESek"), "upper(\"piESek\")");
 }

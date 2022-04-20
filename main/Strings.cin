@@ -45,3 +45,7 @@ byte startsWith(char string[], char beginning[]){
   snprintf(pattern, elCount(pattern),"^%s.*", beginning);
   return (str_match_regex(string, pattern) == 1);
 }
+
+upper(char string[]){
+  toUpper(string, string, elCount(string));
+}
