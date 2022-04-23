@@ -13,16 +13,17 @@ variables
 void MainTest ()
 {
   setInitial();
-  compareStrings_Test();
-  isPalindrome_Test();
-  endsWith_Test();
-  startsWith_Test();
-  upper_Test();
-  lower_Test();
-  capitalize_Test();
-  isAlpha_Test();
-  isAlnum_Test();
-  isNumeric_Test();
+//  compareStrings_Test();
+//  isPalindrome_Test();
+//  endsWith_Test();
+//  startsWith_Test();
+//  upper_Test();
+//  lower_Test();
+//  capitalize_Test();
+//  isAlpha_Test();
+//  isAlnum_Test();
+//  isNumeric_Test();
+  isLower_Test();
   printTotalSummary();
 }
 
@@ -253,3 +254,16 @@ testcase isNumeric_Test(){
   assertFail(isNumeric("Kot i 123"), "isNumeric(\"Kot i 123\")");
   printTestSummary();
 }
+
+testcase isLower_Test(){
+  printTestCaseTitle();
+  assertTrue(isLower("kotek"), "isLower(\"kotek\")");
+  assertFail(isLower("KOTEK"), "isLower(\"KOTEK\")");
+  assertFail(isLower("kotEk"), "isLower(\"kotEk\")");
+  assertFail(isLower("123"), "isLower(\"123\")");
+  assertFail(isLower("kotek123"), "isLower(\"kotek123\")");
+  assertFail(isLower("kot i pies"), "isLower(\"kot i pies\")");
+  assertFail(isLower("kot i 123"), "isLower(\"kot i 123\")");
+  printTestSummary();
+}
+

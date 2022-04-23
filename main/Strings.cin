@@ -82,3 +82,12 @@ byte isNumeric(char string[]){
       return 0;
   return 1;
 }
+
+byte isLower(char string[]){
+  int i;
+  for(i = 0; i < strlen(string); i++)
+    if(!isLowerCase(string[i]))
+      return 0;
+  return 1;
+}
+
