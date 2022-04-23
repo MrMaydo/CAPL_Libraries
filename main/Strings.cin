@@ -98,3 +98,14 @@ byte isUpper(char string[]){
       return 0;
   return 1;
 }
+
+swapcase(char string[]){
+  int i;
+  for(i = 0; i < strlen(string); i++){
+    if(!isLetter(string[i])) continue;
+    if(isLowerCase(string[i]))
+      string[i] = toUpper(string[i]);
+    else if(isUpperCase(string[i]))
+      string[i] = toLower(string[i]); 
+  }
+}

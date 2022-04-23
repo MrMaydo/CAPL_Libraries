@@ -25,6 +25,7 @@ void MainTest ()
   isNumeric_Test();
   isLower_Test();
   isUpper_Test();
+  swapcase_Test();
   printTotalSummary();
 }
 
@@ -271,7 +272,6 @@ testcase isLower_Test(){
   printTestSummary();
 }
 
-
 testcase isUpper_Test(){
   printTestCaseTitle();
   assertTrue(isUpper("KOTEK"), "isUpper(\"KOTEK\")");
@@ -282,4 +282,52 @@ testcase isUpper_Test(){
   assertFail(isUpper("KOT I PIES"), "isUpper(\"KOT I PIES\")");
   assertFail(isUpper("KOT I 123"), "isUpper(\"KOT I 123\")");
   printTestSummary();
+}
+
+
+testcase swapcase_Test(){
+  printTestCaseTitle();
+  swapcase_Test1();
+  swapcase_Test2();
+  swapcase_Test3();
+  swapcase_Test4();
+  swapcase_Test5();
+  swapcase_Test6();
+  printTestSummary();
+}
+
+swapcase_Test1(){
+  char string[100] = "KOTEK";
+  swapcase(string);
+  assertTrue(compareStrings(string, "kotek"), "swapcase(\"KOTEK\")");
+}
+
+swapcase_Test2(){
+  char string[100] = "kotek";
+  swapcase(string);
+  assertTrue(compareStrings(string, "KOTEK"), "swapcase(\"kotek\")");
+}
+
+swapcase_Test3(){
+  char string[100] = "kOtEk";
+  swapcase(string);
+  assertTrue(compareStrings(string, "KoTeK"), "swapcase(\"kOtEk\")");
+}
+
+swapcase_Test4(){
+  char string[100] = "123";
+  swapcase(string);
+  assertTrue(compareStrings(string, "123"), "swapcase(\"123\")");
+}
+
+swapcase_Test5(){
+  char string[100] = "1kOtEk23";
+  swapcase(string);
+  assertTrue(compareStrings(string, "1KoTeK23"), "swapcase(\"1kOtEk23\")");
+}
+
+swapcase_Test6(){
+  char string[100] = "koT i PiEs";
+  swapcase(string);
+  assertTrue(compareStrings(string, "KOt I pIeS"), "swapcase(\"koT i PiEs\")");
 }
