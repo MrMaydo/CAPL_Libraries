@@ -74,3 +74,11 @@ byte isAlnum(char string[]){
       return 0;
   return 1;
 }
+
+byte isNumeric(char string[]){
+  int i;
+  for(i = 0; i < strlen(string); i++)
+    if(!isDigit(string[i]))
+      return 0;
+  return 1;
+}

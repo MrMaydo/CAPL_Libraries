@@ -22,6 +22,7 @@ void MainTest ()
   capitalize_Test();
   isAlpha_Test();
   isAlnum_Test();
+  isNumeric_Test();
   printTotalSummary();
 }
 
@@ -241,5 +242,14 @@ testcase isAlnum_Test(){
   assertTrue(isAlnum("KotoK"), "isAlnum(\"KotoK\")");
   assertTrue(isAlnum("123"), "isAlnum(\"123\")");
   assertFail(isAlnum("Kot i 123"), "isAlnum(\"Kot i 123\")");
+  printTestSummary();
+}
+
+testcase isNumeric_Test(){
+  printTestCaseTitle();
+  assertTrue(isNumeric("123"), "isNumeric(\"123\")");
+  assertFail(isNumeric("KotoK123"), "isNumeric(\"KotoK123\")");
+  assertFail(isNumeric("KotoK"), "isNumeric(\"KotoK\")");
+  assertFail(isNumeric("Kot i 123"), "isNumeric(\"Kot i 123\")");
   printTestSummary();
 }
