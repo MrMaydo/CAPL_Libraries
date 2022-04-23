@@ -26,6 +26,7 @@ void MainTest ()
   isLower_Test();
   isUpper_Test();
   swapcase_Test();
+  zfill_Test();
   printTotalSummary();
 }
 
@@ -330,4 +331,44 @@ swapcase_Test6(){
   char string[100] = "koT i PiEs";
   swapcase(string);
   assertTrue(compareStrings(string, "KOt I pIeS"), "swapcase(\"koT i PiEs\")");
+}
+
+testcase zfill_Test(){
+  printTestCaseTitle();
+  zfill_Test1();
+  zfill_Test2();
+  zfill_Test3();
+  zfill_Test4();
+  zfill_Test5();
+  printTestSummary();
+}
+
+zfill_Test1(){
+  char string[100] = "123";
+  zfill(string, 5);
+  assertTrue(compareStrings(string, "00000123"), "zfill(\"123\"), 5);");
+}
+
+zfill_Test2(){
+  char string[100] = "123";
+  zfill(string, 3);
+  assertTrue(compareStrings(string, "000123"), "zfill(\"123\"), 3);");
+}
+
+zfill_Test3(){
+  char string[100] = "123";
+  zfill(string, 0);
+  assertTrue(compareStrings(string, "123"), "zfill(\"123\"), 0);");
+}
+
+zfill_Test4(){
+  char string[5] = "123";
+  zfill(string, 2);
+  assertTrue(compareStrings(string, "0123"), "zfill(\"123\"), 2);");
+}
+
+zfill_Test5(){
+  char string[4] = "123";
+  zfill(string, 2);
+  assertTrue(compareStrings(string, "123"), "zfill(\"123\"), 2);");
 }
