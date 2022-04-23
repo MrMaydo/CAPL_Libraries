@@ -24,6 +24,7 @@ void MainTest ()
 //  isAlnum_Test();
 //  isNumeric_Test();
   isLower_Test();
+  isUpper_Test();
   printTotalSummary();
 }
 
@@ -267,3 +268,15 @@ testcase isLower_Test(){
   printTestSummary();
 }
 
+
+testcase isUpper_Test(){
+  printTestCaseTitle();
+  assertTrue(isUpper("KOTEK"), "isUpper(\"KOTEK\")");
+  assertFail(isUpper("kotek"), "isUpper(\"kotek\")");
+  assertFail(isUpper("KOTeK"), "isUpper(\"KOTeK\")");
+  assertFail(isUpper("123"), "isUpper(\"123\")");
+  assertFail(isUpper("KOTEK123"), "isUpper(\"KOTEK123\")");
+  assertFail(isUpper("KOT I PIES"), "isUpper(\"KOT I PIES\")");
+  assertFail(isUpper("KOT I 123"), "isUpper(\"KOT I 123\")");
+  printTestSummary();
+}

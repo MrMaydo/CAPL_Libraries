@@ -91,3 +91,10 @@ byte isLower(char string[]){
   return 1;
 }
 
+byte isUpper(char string[]){
+  int i;
+  for(i = 0; i < strlen(string); i++)
+    if(!isUpperCase(string[i]))
+      return 0;
+  return 1;
+}
