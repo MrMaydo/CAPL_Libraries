@@ -112,6 +112,7 @@ swapcase(char string[]){
 
 zfill(char string[], int numOfZeros){
   int i,j, len;
+  if(numOfZeros < 0) return;
   len = strlen(string);
   j = len + numOfZeros;
   while(j >= (elCount(string))){
