@@ -22,7 +22,7 @@ void MainTest ()
 //  capitalize_Test();
 //  isAlpha_Test();
 //  isAlnum_Test();
-//  isNumeric_Test();
+  isNumeric_Test();
   isLower_Test();
   isUpper_Test();
   printTotalSummary();
@@ -250,6 +250,9 @@ testcase isAlnum_Test(){
 testcase isNumeric_Test(){
   printTestCaseTitle();
   assertTrue(isNumeric("123"), "isNumeric(\"123\")");
+  assertFail(isNumeric("-1"), "isNumeric(\"-1\")");
+  assertFail(isNumeric("1.5"), "isNumeric(\"1.5\")");
+  assertFail(isNumeric("1,5"), "isNumeric(\"1,5\")");
   assertFail(isNumeric("KotoK123"), "isNumeric(\"KotoK123\")");
   assertFail(isNumeric("KotoK"), "isNumeric(\"KotoK\")");
   assertFail(isNumeric("Kot i 123"), "isNumeric(\"Kot i 123\")");
